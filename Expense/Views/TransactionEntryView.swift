@@ -48,6 +48,11 @@ struct TransactionEntryView: View {
     @State private var isExpense = true
     @State private var note: String = ""
     @State private var textFieldWidth: CGFloat = 150
+    @State var date = Date.now
+    @State var isShowingDatePicker = false
+
+    let dateRange: ClosedRange<Date> =
+        Date(timeIntervalSinceNow: -864000)...Date(timeIntervalSinceNow: 864000)
 
     private func adjustWidth() {
         let maxWidth: CGFloat = 250
@@ -139,16 +144,27 @@ struct TransactionEntryView: View {
                 }
 
                 HStack {
-                    Button(action: {
-                        // Date picker action
-                    }) {
-                        HStack {
-                            Image(systemName: "calendar")
-                            Text("Today, 7 Aug")
+                    HStack {
+                        Image(systemName: "calendar")
+                        Text(formatDate(date))
+                    }
+                    .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .foregroundColor(.orange)
+                    .cornerRadius(10)
+                    .overlay {
+                        DatePicker(
+                            "",
+                            selection: $date,
+                            displayedComponents: [.date]
+                        )
+                        .blendMode(.destinationOver)
+                        .accentColor(.orange)
+                        .colorScheme(.dark)
+                        .foregroundColor(.blue)
+                        .onChange(of: date) {
+                            print(date)
                         }
-                        .padding()
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(10)
                     }
 
                     Button(action: {
@@ -160,7 +176,24 @@ struct TransactionEntryView: View {
                         }
                         .padding()
                         .background(Color.gray.opacity(0.2))
+                        .foregroundColor(.orange)
                         .cornerRadius(10)
+                        .overlay {
+                            DatePicker(
+                                "",
+                                selection: $date,
+                                in: dateRange,
+                                displayedComponents: .date
+                            )
+                            .datePickerStyle(.graphical)
+                            .frame(height: isShowingDatePicker ? nil : 0, alignment: .top)
+                            .clipped()
+                            .background {
+                                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                    .foregroundColor(Color(UIColor.systemBackground))
+                                    .shadow(radius: 1)
+                            }
+                        }
                     }
                 }
                 .padding()

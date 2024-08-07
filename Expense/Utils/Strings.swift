@@ -16,3 +16,11 @@ func formatCurrency(num: Double, locale: Locale) -> String {
     let priceString = currencyFormatter.string(from: NSNumber(value: num))!
     return priceString
 }
+
+func formatDate(_ date: Date) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "d.M.yyyy"
+
+    let formattedDate = dateFormatter.string(from: date)
+    return formattedDate
+}
