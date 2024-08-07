@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+struct NoHighlightButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label.foregroundColor(.accentColor)
+    }
+}
+
 struct NumberButton: View {
     let number: String
     let action: () -> Void
@@ -33,6 +39,7 @@ struct NumberButton: View {
                 .cornerRadius(15)
                 .scaleEffect(isPressed ? 0.9 : 1.0)
         }
+        .buttonStyle(NoHighlightButtonStyle())
     }
 }
 

@@ -16,7 +16,7 @@ struct TransactionTypePicker: View {
             ForEach(options.indices, id: \.self) { index in
                 Button(action: {
                     withAnimation {
-                        selection = index == 0
+                        selection = (index == 0)
                     }
                 }) {
                     Text(options[index])
@@ -83,10 +83,26 @@ struct TransactionEntryView: View {
 
                 Spacer()
 
-                Text("\(formatCurrency(num: amount, locale: Locale.current))")
-                    .font(.system(size: 45, weight: .bold))
+                ZStack {
+                    Text("\(formatCurrency(num: amount, locale: Locale.current))")
+                        .font(.system(size: 43, weight: .bold))
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, alignment: .center)
+
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            amount = floor(amount/10)
+                        }) {
+                            Image(systemName: "delete.left.fill")
+                                .font(.system(size: 35))
+                                .foregroundColor(.gray.opacity(0.6))
+                        }
+                    }
                     .padding()
-                    .foregroundStyle(.white)
+                }
+                .frame(maxWidth: .infinity)
+
                 Button(action :{}) {
                     HStack {
                         Image(systemName: "list.bullet")
@@ -96,6 +112,7 @@ struct TransactionEntryView: View {
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(10)
                 }
+
                 HStack {
                     Button(action: {
                         // Date picker action
@@ -123,43 +140,7 @@ struct TransactionEntryView: View {
                 }
                 .padding()
 
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 10) {
-                    ForEach(1...9, id: \.self) { number in
-                        NumberButton(number: "\(number)", action: {
-                            let newVal = amount * 10 + Double(number)
-                            let formattedNewVal = formatCurrency(num: newVal, locale: Locale.current)
-                            if formattedNewVal.count <= 11 {
-                                amount = newVal
-                            }
-                        })
-                    }
-                    NumberButton(number: "K", action: {
-                        let newVal = amount * 1000
-                        let formattedNewVal = formatCurrency(num: newVal, locale: Locale.current)
-                        if formattedNewVal.count <= 11 {
-                            amount = newVal
-                        }
-                    })
-                    NumberButton(number: "0", action: {
-                        let newVal = amount * 10
-                        let formattedNewVal = formatCurrency(num: newVal, locale: Locale.current)
-                        if formattedNewVal.count <= 11 {
-                            amount = newVal
-                        }
-                    })
-                    Button(action: {
-                        // Confirm action
-                    }) {
-                        Image(systemName: "checkmark")
-                            .frame(width: 100, height: 80)
-                            .background(Color.white)
-                            .foregroundColor(.black)
-                            .fontWeight(.heavy)
-                            .cornerRadius(10)
-                    }
-                }
-                .padding()
-
+                KeypadView(amount: $amount)
             }
         }
     }
