@@ -14,28 +14,37 @@ struct KeypadView: View {
     var body: some View {
         LazyVGrid(columns: columns, spacing: 10) {
             ForEach(1...9, id: \.self) { number in
-                NumberButton(number: "\(number)", action: {
-                    let newVal = amount * 10 + Double(number)
+                NumberButton(
+                    number: "\(number)",
+                    action: {
+                        let newVal = amount * 10 + Double(number)
+                        let formattedNewVal = formatCurrency(num: newVal, locale: Locale.current)
+                        if formattedNewVal.count <= 11 {
+                            amount = newVal
+                        }
+                    }
+                )
+            }
+            NumberButton(
+                number: "K",
+                action: {
+                    let newVal = amount * 1000
                     let formattedNewVal = formatCurrency(num: newVal, locale: Locale.current)
                     if formattedNewVal.count <= 11 {
                         amount = newVal
                     }
-                })
-            }
-            NumberButton(number: "K", action: {
-                let newVal = amount * 1000
-                let formattedNewVal = formatCurrency(num: newVal, locale: Locale.current)
-                if formattedNewVal.count <= 11 {
-                    amount = newVal
                 }
-            })
-            NumberButton(number: "0", action: {
-                let newVal = amount * 10
-                let formattedNewVal = formatCurrency(num: newVal, locale: Locale.current)
-                if formattedNewVal.count <= 11 {
-                    amount = newVal
+            )
+            NumberButton(
+                number: "0",
+                action: {
+                    let newVal = amount * 10
+                    let formattedNewVal = formatCurrency(num: newVal, locale: Locale.current)
+                    if formattedNewVal.count <= 11 {
+                        amount = newVal
+                    }
                 }
-            })
+            )
             Button(action: {
                 // Confirm action
             }) {

@@ -25,13 +25,13 @@ struct TransactionTypePicker: View {
                 .padding(.horizontal, 14)
                 .background(
                     selection == (index == 0)
-                    ? Color.gray.opacity(0.6)
-                    : Color.clear
+                        ? Color.gray.opacity(0.6)
+                        : Color.clear
                 )
                 .foregroundColor(
                     selection == (index == 0)
-                    ? .white
-                    : .gray
+                        ? .white
+                        : .gray
                 )
                 .cornerRadius(18)
             }
@@ -46,6 +46,16 @@ struct TransactionTypePicker: View {
 struct TransactionEntryView: View {
     @State private var amount: Double = 0
     @State private var isExpense = true
+    @State private var note: String = ""
+    @State private var textFieldWidth: CGFloat = 150
+
+    private func adjustWidth() {
+        let maxWidth: CGFloat = 250
+        let minWidth: CGFloat = 150
+
+        let textWidth = note.size(withAttributes: [.font: UIFont.systemFont(ofSize: 17)]).width + 50
+        textFieldWidth = min(maxWidth, max(minWidth, textWidth))
+    }
 
     var body: some View {
         ZStack {
@@ -70,7 +80,7 @@ struct TransactionEntryView: View {
                     .frame(width: 200)
                     Spacer()
 
-                    Button (action: {}) {
+                    Button(action: {}) {
                         Image(systemName: "arrow.clockwise")
                             .foregroundColor(.gray.opacity(0.6))
                             .padding(10)
@@ -92,25 +102,40 @@ struct TransactionEntryView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            amount = floor(amount/10)
+                            amount = floor(amount / 10)
                         }) {
                             Image(systemName: "delete.left.fill")
                                 .font(.system(size: 35))
                                 .foregroundColor(.gray.opacity(0.6))
                         }
                     }
-                    .padding()
+                    .padding(.horizontal)
                 }
                 .frame(maxWidth: .infinity)
 
-                Button(action :{}) {
-                    HStack {
-                        Image(systemName: "list.bullet")
-                        Text("Add Note")
+                HStack {
+                    Image(systemName: "list.bullet")
+                        .foregroundColor(.orange.opacity(0.9))
+
+                    TextField(
+                        "",
+                        text: $note,
+                        prompt: Text("Note...").foregroundColor(.gray)
+                    )
+                    .onChange(of: note) {
+                        adjustWidth()
                     }
-                    .padding()
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(10)
+                    .padding(.horizontal)
+                    .padding(.vertical, 8)
+                    .frame(width: textFieldWidth)
+                    .foregroundColor(.orange.opacity(0.7))
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(.gray.opacity(0.5), lineWidth: 1)
+                    )
+                }
+                .onChange(of: note) {
+                    adjustWidth()
                 }
 
                 HStack {
