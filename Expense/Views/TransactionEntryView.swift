@@ -44,7 +44,7 @@ struct TransactionTypePicker: View {
 }
 
 struct TransactionEntryView: View {
-    @State private var amount = "0"
+    @State private var amount: Double = 0
     @State private var isExpense = true
 
     var body: some View {
@@ -83,8 +83,8 @@ struct TransactionEntryView: View {
 
                 Spacer()
 
-                Text("$\(amount)")
-                    .font(.system(size: 60, weight: .bold))
+                Text("\(formatCurrency(num: amount, locale: Locale.current))")
+                    .font(.system(size: 45, weight: .bold))
                     .padding()
                     .foregroundStyle(.white)
                 Button(action :{}) {
@@ -125,10 +125,28 @@ struct TransactionEntryView: View {
 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 10) {
                     ForEach(1...9, id: \.self) { number in
-                        NumberButton(number: "\(number)", action: { amount += "\(number)" })
+                        NumberButton(number: "\(number)", action: {
+                            let newVal = amount * 10 + Double(number)
+                            let formattedNewVal = formatCurrency(num: newVal, locale: Locale.current)
+                            if formattedNewVal.count <= 11 {
+                                amount = newVal
+                            }
+                        })
                     }
-                    NumberButton(number: ".", action: { amount += "." })
-                    NumberButton(number: "0", action: { amount += "0" })
+                    NumberButton(number: "K", action: {
+                        let newVal = amount * 1000
+                        let formattedNewVal = formatCurrency(num: newVal, locale: Locale.current)
+                        if formattedNewVal.count <= 11 {
+                            amount = newVal
+                        }
+                    })
+                    NumberButton(number: "0", action: {
+                        let newVal = amount * 10
+                        let formattedNewVal = formatCurrency(num: newVal, locale: Locale.current)
+                        if formattedNewVal.count <= 11 {
+                            amount = newVal
+                        }
+                    })
                     Button(action: {
                         // Confirm action
                     }) {
