@@ -18,9 +18,15 @@ func formatCurrency(num: Double, locale: Locale) -> String {
 }
 
 func formatDate(_ date: Date) -> String {
+    let calendar = Calendar.current
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "d.M.yyyy"
 
-    let formattedDate = dateFormatter.string(from: date)
-    return formattedDate
+    if calendar.isDateInToday(date) {
+        dateFormatter.dateFormat = "'Today,' d MMM HH:mm"
+    }
+    else {
+        dateFormatter.dateFormat = "EEE, d MMM HH:mm"
+    }
+
+    return dateFormatter.string(from: date)
 }

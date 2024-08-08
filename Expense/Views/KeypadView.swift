@@ -46,10 +46,12 @@ struct KeypadView: View {
                 }
             )
             Button(action: {
-                // Confirm action
+                amount = floor(amount / 10)
             }) {
-                Image(systemName: "checkmark")
-                    .frame(width: 100, height: 80)
+                Image(systemName: "delete.left.fill")
+                    .font(.system(size: 35))
+                    .foregroundColor(.gray)
+                    .frame(width: 80, height: 60)
                     .background(Color.white)
                     .foregroundColor(.black)
                     .fontWeight(.heavy)

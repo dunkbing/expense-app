@@ -15,6 +15,7 @@
 		37B32E6C2C6317D0000F9312 /* TransactionEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E6B2C6317D0000F9312 /* TransactionEntryView.swift */; };
 		37B32E6F2C632B96000F9312 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E6E2C632B96000F9312 /* Strings.swift */; };
 		37B32E712C634867000F9312 /* KeypadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E702C634867000F9312 /* KeypadView.swift */; };
+		37B32E732C647B07000F9312 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E722C647B07000F9312 /* CategoriesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		37B32E6B2C6317D0000F9312 /* TransactionEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEntryView.swift; sourceTree = "<group>"; };
 		37B32E6E2C632B96000F9312 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		37B32E702C634867000F9312 /* KeypadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadView.swift; sourceTree = "<group>"; };
+		37B32E722C647B07000F9312 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				37B32E692C631707000F9312 /* NumberButton.swift */,
 				37B32E6B2C6317D0000F9312 /* TransactionEntryView.swift */,
 				37B32E702C634867000F9312 /* KeypadView.swift */,
+				37B32E722C647B07000F9312 /* CategoriesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37B32E6C2C6317D0000F9312 /* TransactionEntryView.swift in Sources */,
+				37B32E732C647B07000F9312 /* CategoriesView.swift in Sources */,
 				37B32E6A2C631707000F9312 /* NumberButton.swift in Sources */,
 				37B32E712C634867000F9312 /* KeypadView.swift in Sources */,
 				37B32E6F2C632B96000F9312 /* Strings.swift in Sources */,

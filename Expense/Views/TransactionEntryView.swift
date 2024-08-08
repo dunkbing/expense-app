@@ -49,7 +49,7 @@ struct TransactionEntryView: View {
     @State private var note: String = ""
     @State private var textFieldWidth: CGFloat = 150
     @State var date = Date.now
-    @State var isShowingDatePicker = false
+    @State private var isShowingDatePicker = false
 
     let dateRange: ClosedRange<Date> =
         Date(timeIntervalSinceNow: -864000)...Date(timeIntervalSinceNow: 864000)
@@ -64,7 +64,7 @@ struct TransactionEntryView: View {
 
     var body: some View {
         ZStack {
-            Color.black.edgesIgnoringSafeArea(.all)
+            Color.black.ignoresSafeArea(.all)
 
             VStack {
                 HStack {
@@ -94,111 +94,77 @@ struct TransactionEntryView: View {
                             .cornerRadius(50)
                     }
                 }
-                .padding()
+                .padding(.top, 10)
+                .padding(.all)
 
                 Spacer()
 
-                ZStack {
-                    Text("\(formatCurrency(num: amount, locale: Locale.current))")
-                        .font(.system(size: 43, weight: .bold))
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, alignment: .center)
+                Text("\(formatCurrency(num: amount, locale: Locale.current))")
+                    .font(.system(size: 43, weight: .bold))
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, alignment: .center)
 
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            amount = floor(amount / 10)
-                        }) {
-                            Image(systemName: "delete.left.fill")
-                                .font(.system(size: 35))
-                                .foregroundColor(.gray.opacity(0.6))
-                        }
-                    }
-                    .padding(.horizontal)
-                }
-                .frame(maxWidth: .infinity)
-
-                HStack {
-                    Image(systemName: "list.bullet")
-                        .foregroundColor(.orange.opacity(0.9))
-
-                    TextField(
-                        "",
-                        text: $note,
-                        prompt: Text("Note...").foregroundColor(.gray)
-                    )
-                    .onChange(of: note) {
-                        adjustWidth()
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
-                    .frame(width: textFieldWidth)
-                    .foregroundColor(.orange.opacity(0.7))
-                    .background(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(.gray.opacity(0.5), lineWidth: 1)
-                    )
-                }
+                TextField(
+                    "",
+                    text: $note,
+                    prompt: Text("Note...").foregroundColor(.gray)
+                )
                 .onChange(of: note) {
                     adjustWidth()
                 }
+                .padding(.horizontal)
+                .padding(.vertical, 8)
+                .frame(width: textFieldWidth)
+                .foregroundColor(.orange.opacity(0.7))
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(.gray.opacity(0.5), lineWidth: 1)
+                )
+
+                KeypadView(amount: $amount)
+
+                CategoriesView()
+                CategoriesView()
 
                 HStack {
-                    HStack {
+                    Button(action: {
+                        isShowingDatePicker = true
+                    }) {
                         Image(systemName: "calendar")
-                        Text(formatDate(date))
-                    }
-                    .padding()
-                    .background(Color.gray.opacity(0.2))
-                    .foregroundColor(.orange)
-                    .cornerRadius(10)
-                    .overlay {
-                        DatePicker(
-                            "",
-                            selection: $date,
-                            displayedComponents: [.date]
-                        )
-                        .blendMode(.destinationOver)
-                        .accentColor(.orange)
-                        .colorScheme(.dark)
-                        .foregroundColor(.blue)
-                        .onChange(of: date) {
-                            print(date)
-                        }
+                            .font(.system(size: 45))
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
                     }
 
                     Button(action: {
                         // Category action
                     }) {
-                        HStack {
-                            Image(systemName: "square.grid.2x2")
-                            Text("Category")
-                        }
-                        .padding()
-                        .background(Color.gray.opacity(0.2))
-                        .foregroundColor(.orange)
-                        .cornerRadius(10)
-                        .overlay {
-                            DatePicker(
-                                "",
-                                selection: $date,
-                                in: dateRange,
-                                displayedComponents: .date
-                            )
-                            .datePickerStyle(.graphical)
-                            .frame(height: isShowingDatePicker ? nil : 0, alignment: .top)
-                            .clipped()
-                            .background {
-                                RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                    .foregroundColor(Color(UIColor.systemBackground))
-                                    .shadow(radius: 1)
-                            }
-                        }
+                        Text("Add for \(formatDate(date))")
+                            .fontWeight(.bold)
+                            .font(.system(size: 18))
                     }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.blue.opacity(0.7))
+                    .cornerRadius(25)
                 }
                 .padding()
 
-                KeypadView(amount: $amount)
+                Spacer()
+            }
+            .sheet(isPresented: $isShowingDatePicker) {
+                ZStack {
+                    DatePicker("", selection: $date, displayedComponents: [.date, .hourAndMinute])
+                        .datePickerStyle(.graphical)
+                        .accentColor(.blue)
+                        .labelsHidden()
+                        .foregroundColor(.white)
+                        .colorScheme(.dark)
+                        .presentationDetents([.height(400)])
+                        .presentationDragIndicator(.visible)
+                        .padding()
+                }.background(Color.black.gradient.opacity(0.8))
             }
         }
     }

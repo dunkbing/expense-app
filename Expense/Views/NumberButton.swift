@@ -33,7 +33,7 @@ struct NumberButton: View {
             Text(number)
                 .font(.title)
                 .fontWeight(.bold)
-                .frame(width: 100, height: 80)
+                .frame(width: 80, height: 60)
                 .background(Color.gray.opacity(0.2))
                 .foregroundColor(.orange)
                 .cornerRadius(15)
