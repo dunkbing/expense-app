@@ -51,13 +51,14 @@ struct KeypadView: View {
                 Image(systemName: "delete.left.fill")
                     .font(.system(size: 35))
                     .foregroundColor(.gray)
-                    .frame(width: 80, height: 60)
+                    .frame(width: 90, height: 55)
                     .background(Color.white)
                     .foregroundColor(.black)
                     .fontWeight(.heavy)
                     .cornerRadius(10)
             }
         }
-        .padding()
+        .padding(.vertical, 10)
+        .padding(.horizontal, 25)
     }
 }

@@ -12,10 +12,13 @@
 		37B32E5F2C631636000F9312 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37B32E5E2C631636000F9312 /* Assets.xcassets */; };
 		37B32E622C631636000F9312 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37B32E612C631636000F9312 /* Preview Assets.xcassets */; };
 		37B32E6A2C631707000F9312 /* NumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E692C631707000F9312 /* NumberButton.swift */; };
-		37B32E6C2C6317D0000F9312 /* TransactionEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E6B2C6317D0000F9312 /* TransactionEntryView.swift */; };
+		37B32E6C2C6317D0000F9312 /* ExpenseEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E6B2C6317D0000F9312 /* ExpenseEntryView.swift */; };
 		37B32E6F2C632B96000F9312 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E6E2C632B96000F9312 /* Strings.swift */; };
 		37B32E712C634867000F9312 /* KeypadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E702C634867000F9312 /* KeypadView.swift */; };
 		37B32E732C647B07000F9312 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E722C647B07000F9312 /* CategoriesView.swift */; };
+		37B32E752C64A3B7000F9312 /* ProspectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E742C64A3B7000F9312 /* ProspectView.swift */; };
+		37B32E772C64A6C0000F9312 /* ExpenseEntryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E762C64A6C0000F9312 /* ExpenseEntryTabView.swift */; };
+		37B32E792C64BB83000F9312 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E782C64BB83000F9312 /* CustomTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,10 +28,13 @@
 		37B32E5E2C631636000F9312 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37B32E612C631636000F9312 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		37B32E692C631707000F9312 /* NumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButton.swift; sourceTree = "<group>"; };
-		37B32E6B2C6317D0000F9312 /* TransactionEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEntryView.swift; sourceTree = "<group>"; };
+		37B32E6B2C6317D0000F9312 /* ExpenseEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryView.swift; sourceTree = "<group>"; };
 		37B32E6E2C632B96000F9312 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		37B32E702C634867000F9312 /* KeypadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadView.swift; sourceTree = "<group>"; };
 		37B32E722C647B07000F9312 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		37B32E742C64A3B7000F9312 /* ProspectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProspectView.swift; sourceTree = "<group>"; };
+		37B32E762C64A6C0000F9312 /* ExpenseEntryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryTabView.swift; sourceTree = "<group>"; };
+		37B32E782C64BB83000F9312 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +89,12 @@
 			isa = PBXGroup;
 			children = (
 				37B32E692C631707000F9312 /* NumberButton.swift */,
-				37B32E6B2C6317D0000F9312 /* TransactionEntryView.swift */,
+				37B32E6B2C6317D0000F9312 /* ExpenseEntryView.swift */,
+				37B32E762C64A6C0000F9312 /* ExpenseEntryTabView.swift */,
 				37B32E702C634867000F9312 /* KeypadView.swift */,
 				37B32E722C647B07000F9312 /* CategoriesView.swift */,
+				37B32E742C64A3B7000F9312 /* ProspectView.swift */,
+				37B32E782C64BB83000F9312 /* CustomTabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,12 +177,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37B32E6C2C6317D0000F9312 /* TransactionEntryView.swift in Sources */,
+				37B32E6C2C6317D0000F9312 /* ExpenseEntryView.swift in Sources */,
 				37B32E732C647B07000F9312 /* CategoriesView.swift in Sources */,
+				37B32E752C64A3B7000F9312 /* ProspectView.swift in Sources */,
 				37B32E6A2C631707000F9312 /* NumberButton.swift in Sources */,
 				37B32E712C634867000F9312 /* KeypadView.swift in Sources */,
 				37B32E6F2C632B96000F9312 /* Strings.swift in Sources */,
 				37B32E5D2C631634000F9312 /* ContentView.swift in Sources */,
+				37B32E792C64BB83000F9312 /* CustomTabView.swift in Sources */,
+				37B32E772C64A6C0000F9312 /* ExpenseEntryTabView.swift in Sources */,
 				37B32E5B2C631634000F9312 /* ExpenseApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
