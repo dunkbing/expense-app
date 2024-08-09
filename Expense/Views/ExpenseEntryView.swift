@@ -50,6 +50,7 @@ struct ExpenseEntryView: View {
     @State private var textFieldWidth: CGFloat = 150
     @State var date = Date.now
     @State private var isShowingDatePicker = false
+    @State private var showToast = false
 
     let dateRange: ClosedRange<Date> =
         Date(timeIntervalSinceNow: -864000)...Date(timeIntervalSinceNow: 864000)
@@ -64,32 +65,16 @@ struct ExpenseEntryView: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Button(action: {}) {
-                    Image(systemName: "xmark")
-                        .foregroundColor(.gray.opacity(0.6))
-                        .padding(10)
-                        .fontWeight(.black)
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(50)
-                }
-                Spacer()
-
-                ExpenseTypePicker(
-                    selection: $isExpense,
-                    options: ["Expense", "Income"]
+            ExpenseTypePicker(
+                selection: $isExpense,
+                options: ["Expense", "Income"]
+            )
+            .frame(width: 200)
+            .overlay {
+                ToastView(
+                    message: "This is a toast message!",
+                    isShowing: $showToast
                 )
-                .frame(width: 200)
-                Spacer()
-
-                Button(action: {}) {
-                    Image(systemName: "arrow.clockwise")
-                        .foregroundColor(.gray.opacity(0.6))
-                        .padding(10)
-                        .fontWeight(.black)
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(50)
-                }
             }
             .padding(.horizontal)
 
@@ -136,6 +121,7 @@ struct ExpenseEntryView: View {
                 .foregroundColor(.white)
 
                 AnimatedPressButton(action: {
+                    showToast = true
                 }) {
                     HStack {
                         Text("Add")
