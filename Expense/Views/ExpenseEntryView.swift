@@ -14,7 +14,7 @@ struct ExpenseTypePicker: View {
     var body: some View {
         HStack(spacing: 1) {
             ForEach(options.indices, id: \.self) { index in
-                Button(action: {
+                AnimatedPressButton(action: {
                     withAnimation(.easeInOut(duration: 0.3)) {
                         selection = (index == 0)
                     }
@@ -123,7 +123,7 @@ struct ExpenseEntryView: View {
             CategoriesView()
 
             VStack {
-                Button(action: {
+                AnimatedPressButton(action: {
                     isShowingDatePicker = true
                 }) {
                     HStack {
@@ -135,7 +135,7 @@ struct ExpenseEntryView: View {
                 }
                 .foregroundColor(.white)
 
-                Button(action: {
+                AnimatedPressButton(action: {
                 }) {
                     HStack {
                         Text("Add")
@@ -144,7 +144,7 @@ struct ExpenseEntryView: View {
                     .padding(.vertical)
                 }
                 .frame(maxWidth: .infinity)
-                .font(.system(size: 20))
+                .font(.system(size: 25))
                 .fontWeight(.bold)
                 .foregroundColor(.white)
                 .background(Color.green.opacity(0.7))

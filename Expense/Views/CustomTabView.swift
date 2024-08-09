@@ -7,6 +7,28 @@
 
 import SwiftUI
 
+struct TabButton: View {
+    let icon: String
+    let title: String
+    let action: () -> Void
+    let isSelected: Bool
+
+    var body: some View {
+        AnimatedPressButton(action: action) {
+            VStack {
+                Image(systemName: icon)
+                    .font(.system(size: 25, weight: .bold))
+                Text(title)
+                    .font(.headline)
+            }
+            .foregroundColor(isSelected ? .white : .gray)
+            .padding(10)
+            .shadow(color: isSelected ? .orange.opacity(0.6) : .clear, radius: 10, x: 0, y: 0)
+        }
+        .padding(.horizontal, 10)
+    }
+}
+
 struct CustomTabView: View {
     @Binding var tabSelection: Int
     @Binding var isDetailShowing: Bool
@@ -15,47 +37,41 @@ struct CustomTabView: View {
     var body: some View {
         ZStack {
             UnevenRoundedRectangle(
-                topLeadingRadius: 12,
+                topLeadingRadius: 20,
                 bottomLeadingRadius: 42,
                 bottomTrailingRadius: 42,
-                topTrailingRadius: 12
+                topTrailingRadius: 20
             )
 
             HStack(spacing: 15) {
-                Button(action: {
-                    tabSelection = 1
-                }) {
-                    VStack {
-                        Image(systemName: "plus.app")
-                            .font(.system(size: 29, weight: .bold))
-                        Text("Expense")
-                            .font(.headline)
-                    }
-                    .foregroundColor(.mint)
-                }
-                .buttonStyle(NoHighlightButtonStyle())
-                Button(action: {
-                    tabSelection = 2
-                }) {
-                    VStack {
-                        Image(systemName: "gearshape.fill")
-                            .font(.system(size: 25, weight: .bold))
-                        Text("Settings")
-                            .font(.headline)
-                    }
-                    .foregroundColor(.mint)
-                }
-                .buttonStyle(NoHighlightButtonStyle())
+                TabButton(
+                    icon: "pencil.and.list.clipboard",
+                    title: "Insight",
+                    action: { withAnimation(.spring()) { tabSelection = 1 } },
+                    isSelected: tabSelection == 1
+                )
+                TabButton(
+                    icon: "note.text.badge.plus",
+                    title: "Expense",
+                    action: { withAnimation(.spring()) { tabSelection = 2 } },
+                    isSelected: tabSelection == 2
+                )
+                TabButton(
+                    icon: "gearshape.fill",
+                    title: "Settings",
+                    action: { withAnimation(.spring()) { tabSelection = 3 } },
+                    isSelected: tabSelection == 3
+                )
             }
         }
-        .background(.ultraThinMaterial)
+        .background(.ultraThinMaterial.opacity(0.2))
         .frame(height: 80)
         .clipShape(
             UnevenRoundedRectangle(
-                topLeadingRadius: 12,
+                topLeadingRadius: 20,
                 bottomLeadingRadius: 42,
                 bottomTrailingRadius: 42,
-                topTrailingRadius: 12
+                topTrailingRadius: 20
             )
         )
         .offset(y: yOffset)

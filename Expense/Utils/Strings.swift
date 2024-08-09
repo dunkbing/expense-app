@@ -24,6 +24,9 @@ func formatDate(_ date: Date) -> String {
     if calendar.isDateInToday(date) {
         dateFormatter.dateFormat = "'Today,' d MMM HH:mm"
     }
+    else if calendar.isDateInYesterday(date) {
+        dateFormatter.dateFormat = "'Yesterday,' d MMM HH:mm"
+    }
     else {
         dateFormatter.dateFormat = "EEE, d MMM HH:mm"
     }

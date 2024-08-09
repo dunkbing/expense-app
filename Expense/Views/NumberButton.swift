@@ -7,29 +7,13 @@
 
 import SwiftUI
 
-struct NoHighlightButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label.foregroundColor(.accentColor)
-    }
-}
-
 struct NumberButton: View {
     let number: String
     let action: () -> Void
     @State private var isPressed: Bool = false
 
     var body: some View {
-        Button(action: {
-            withAnimation(.easeInOut(duration: 0.1)) {
-                isPressed = true
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                withAnimation(.easeInOut(duration: 0.1)) {
-                    isPressed = false
-                }
-                action()
-            }
-        }) {
+        AnimatedPressButton(action: action) {
             Text(number)
                 .font(.title)
                 .fontWeight(.bold)
@@ -39,7 +23,6 @@ struct NumberButton: View {
                 .cornerRadius(15)
                 .scaleEffect(isPressed ? 0.9 : 1.0)
         }
-        .buttonStyle(NoHighlightButtonStyle())
     }
 }
 

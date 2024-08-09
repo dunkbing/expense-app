@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3756975A2C65C68000BAB09D /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375697592C65C68000BAB09D /* HistoryView.swift */; };
+		3756975C2C65EDDB00BAB09D /* AnimatedPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3756975B2C65EDDB00BAB09D /* AnimatedPressButton.swift */; };
 		37B32E5B2C631634000F9312 /* ExpenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E5A2C631634000F9312 /* ExpenseApp.swift */; };
 		37B32E5D2C631634000F9312 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E5C2C631634000F9312 /* ContentView.swift */; };
 		37B32E5F2C631636000F9312 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37B32E5E2C631636000F9312 /* Assets.xcassets */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		375697592C65C68000BAB09D /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		3756975B2C65EDDB00BAB09D /* AnimatedPressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPressButton.swift; sourceTree = "<group>"; };
 		37B32E572C631634000F9312 /* Expense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Expense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37B32E5A2C631634000F9312 /* ExpenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseApp.swift; sourceTree = "<group>"; };
 		37B32E5C2C631634000F9312 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 				37B32E722C647B07000F9312 /* CategoriesView.swift */,
 				37B32E742C64A3B7000F9312 /* ProspectView.swift */,
 				37B32E782C64BB83000F9312 /* CustomTabView.swift */,
+				375697592C65C68000BAB09D /* HistoryView.swift */,
+				3756975B2C65EDDB00BAB09D /* AnimatedPressButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,11 +183,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3756975C2C65EDDB00BAB09D /* AnimatedPressButton.swift in Sources */,
 				37B32E6C2C6317D0000F9312 /* ExpenseEntryView.swift in Sources */,
 				37B32E732C647B07000F9312 /* CategoriesView.swift in Sources */,
 				37B32E752C64A3B7000F9312 /* ProspectView.swift in Sources */,
 				37B32E6A2C631707000F9312 /* NumberButton.swift in Sources */,
 				37B32E712C634867000F9312 /* KeypadView.swift in Sources */,
+				3756975A2C65C68000BAB09D /* HistoryView.swift in Sources */,
 				37B32E6F2C632B96000F9312 /* Strings.swift in Sources */,
 				37B32E5D2C631634000F9312 /* ContentView.swift in Sources */,
 				37B32E792C64BB83000F9312 /* CustomTabView.swift in Sources */,

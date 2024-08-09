@@ -45,7 +45,7 @@ struct KeypadView: View {
                     }
                 }
             )
-            Button(action: {
+            AnimatedPressButton(action: {
                 amount = floor(amount / 10)
             }) {
                 Image(systemName: "delete.left.fill")

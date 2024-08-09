@@ -17,10 +17,11 @@ struct ContentView: View {
         ZStack {
             Color.black.ignoresSafeArea(.all)
             TabView(selection: $tabSelection) {
+                HistoryView().tag(1)
                 ExpenseEntryTabView()
-                    .tag(1)
-                ProspectView(filter: .uncontacted)
                     .tag(2)
+                ProspectView(filter: .uncontacted)
+                    .tag(3)
             }
             .overlay(alignment: .bottom) {
                 if isDetailShowing {
