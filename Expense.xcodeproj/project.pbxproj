@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3756975A2C65C68000BAB09D /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375697592C65C68000BAB09D /* HistoryView.swift */; };
 		3756975C2C65EDDB00BAB09D /* AnimatedPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3756975B2C65EDDB00BAB09D /* AnimatedPressButton.swift */; };
+		3756975E2C66000600BAB09D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3756975D2C66000600BAB09D /* SettingsView.swift */; };
+		375697612C660C1000BAB09D /* ExpenseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375697602C660C1000BAB09D /* ExpenseEntity.swift */; };
+		375697632C660CE200BAB09D /* CategoryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375697622C660CE200BAB09D /* CategoryEntity.swift */; };
 		37B32E5B2C631634000F9312 /* ExpenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E5A2C631634000F9312 /* ExpenseApp.swift */; };
 		37B32E5D2C631634000F9312 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E5C2C631634000F9312 /* ContentView.swift */; };
 		37B32E5F2C631636000F9312 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37B32E5E2C631636000F9312 /* Assets.xcassets */; };
@@ -18,7 +21,6 @@
 		37B32E6F2C632B96000F9312 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E6E2C632B96000F9312 /* Strings.swift */; };
 		37B32E712C634867000F9312 /* KeypadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E702C634867000F9312 /* KeypadView.swift */; };
 		37B32E732C647B07000F9312 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E722C647B07000F9312 /* CategoriesView.swift */; };
-		37B32E752C64A3B7000F9312 /* ProspectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E742C64A3B7000F9312 /* ProspectView.swift */; };
 		37B32E772C64A6C0000F9312 /* ExpenseEntryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E762C64A6C0000F9312 /* ExpenseEntryTabView.swift */; };
 		37B32E792C64BB83000F9312 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E782C64BB83000F9312 /* CustomTabView.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +28,9 @@
 /* Begin PBXFileReference section */
 		375697592C65C68000BAB09D /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		3756975B2C65EDDB00BAB09D /* AnimatedPressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPressButton.swift; sourceTree = "<group>"; };
+		3756975D2C66000600BAB09D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		375697602C660C1000BAB09D /* ExpenseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntity.swift; sourceTree = "<group>"; };
+		375697622C660CE200BAB09D /* CategoryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEntity.swift; sourceTree = "<group>"; };
 		37B32E572C631634000F9312 /* Expense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Expense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37B32E5A2C631634000F9312 /* ExpenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseApp.swift; sourceTree = "<group>"; };
 		37B32E5C2C631634000F9312 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,7 +41,6 @@
 		37B32E6E2C632B96000F9312 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		37B32E702C634867000F9312 /* KeypadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadView.swift; sourceTree = "<group>"; };
 		37B32E722C647B07000F9312 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
-		37B32E742C64A3B7000F9312 /* ProspectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProspectView.swift; sourceTree = "<group>"; };
 		37B32E762C64A6C0000F9312 /* ExpenseEntryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryTabView.swift; sourceTree = "<group>"; };
 		37B32E782C64BB83000F9312 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,6 +56,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3756975F2C660C0000BAB09D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				375697602C660C1000BAB09D /* ExpenseEntity.swift */,
+				375697622C660CE200BAB09D /* CategoryEntity.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		37B32E4E2C631634000F9312 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +84,7 @@
 		37B32E592C631634000F9312 /* Expense */ = {
 			isa = PBXGroup;
 			children = (
+				3756975F2C660C0000BAB09D /* Data */,
 				37B32E6D2C632B78000F9312 /* Utils */,
 				37B32E682C6316F8000F9312 /* Views */,
 				37B32E5A2C631634000F9312 /* ExpenseApp.swift */,
@@ -97,10 +111,10 @@
 				37B32E762C64A6C0000F9312 /* ExpenseEntryTabView.swift */,
 				37B32E702C634867000F9312 /* KeypadView.swift */,
 				37B32E722C647B07000F9312 /* CategoriesView.swift */,
-				37B32E742C64A3B7000F9312 /* ProspectView.swift */,
 				37B32E782C64BB83000F9312 /* CustomTabView.swift */,
 				375697592C65C68000BAB09D /* HistoryView.swift */,
 				3756975B2C65EDDB00BAB09D /* AnimatedPressButton.swift */,
+				3756975D2C66000600BAB09D /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,9 +198,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3756975C2C65EDDB00BAB09D /* AnimatedPressButton.swift in Sources */,
+				375697612C660C1000BAB09D /* ExpenseEntity.swift in Sources */,
+				375697632C660CE200BAB09D /* CategoryEntity.swift in Sources */,
 				37B32E6C2C6317D0000F9312 /* ExpenseEntryView.swift in Sources */,
 				37B32E732C647B07000F9312 /* CategoriesView.swift in Sources */,
-				37B32E752C64A3B7000F9312 /* ProspectView.swift in Sources */,
 				37B32E6A2C631707000F9312 /* NumberButton.swift in Sources */,
 				37B32E712C634867000F9312 /* KeypadView.swift in Sources */,
 				3756975A2C65C68000BAB09D /* HistoryView.swift in Sources */,
@@ -195,6 +210,7 @@
 				37B32E792C64BB83000F9312 /* CustomTabView.swift in Sources */,
 				37B32E772C64A6C0000F9312 /* ExpenseEntryTabView.swift in Sources */,
 				37B32E5B2C631634000F9312 /* ExpenseApp.swift in Sources */,
+				3756975E2C66000600BAB09D /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

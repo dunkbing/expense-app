@@ -65,12 +65,34 @@ struct ExpenseRow: View {
 }
 
 struct HistoryView: View {
+    struct ExpenseHistoryItem {
+        let label: String
+        let amount: Double
+        let expenses: [ExpenseEntity]
+    }
+    let expenses: [ExpenseHistoryItem]
+
     var body: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.all)
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
+                    ForEach(expenses, id: \.label) { e in
+                        ExpenseSection(
+                            title: e.label,
+                            amount: formatCurrency(num: e.amount, locale: Locale.current)
+                        ) {
+                            ForEach(e.expenses, id: \.id) { ee in
+                                ExpenseRow(
+                                    icon: ee.category.icon,
+                                    title: ee.category.title,
+                                    time: ee.createdAt.formatted(),
+                                    amount: String(ee.amount)
+                                )
+                            }
+                        }
+                    }
                     ExpenseSection(title: "TODAY", amount: "-d212.000") {
                         ExpenseRow(icon: "🏠", title: "Rent", time: "10:27 AM", amount: "-d212.000")
                         ExpenseRow(icon: "🏠", title: "Rent", time: "10:27 AM", amount: "-d212.000")
@@ -90,13 +112,37 @@ struct HistoryView: View {
                         )
                     }
                 }
-                .padding()
             }
+            .padding()
         }
     }
-
 }
 
 #Preview {
-    HistoryView()
+    HistoryView(expenses: [
+        HistoryView.ExpenseHistoryItem(
+            label: "TODAY",
+            amount: 212000,
+            expenses: [
+                ExpenseEntity(
+                    id: 1,
+                    amount: 212000,
+                    createdAt: Date.now,
+                    category: CategoryEntity(id: 1, title: "Rent", icon: "🏠", color: "green")
+                )
+            ]
+        ),
+        HistoryView.ExpenseHistoryItem(
+            label: "YESTERDAY",
+            amount: 212000,
+            expenses: [
+                ExpenseEntity(
+                    id: 1,
+                    amount: 212000,
+                    createdAt: Date.now,
+                    category: CategoryEntity(id: 1, title: "Rent", icon: "🏠", color: "green")
+                )
+            ]
+        ),
+    ])
 }

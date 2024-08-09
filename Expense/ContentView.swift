@@ -17,10 +17,10 @@ struct ContentView: View {
         ZStack {
             Color.black.ignoresSafeArea(.all)
             TabView(selection: $tabSelection) {
-                HistoryView().tag(1)
+                HistoryView(expenses: []).tag(1)
                 ExpenseEntryTabView()
                     .tag(2)
-                ProspectView(filter: .uncontacted)
+                SettingsView()
                     .tag(3)
             }
             .overlay(alignment: .bottom) {
