@@ -12,7 +12,9 @@ struct ContentView: View {
     @State private var isDetailShowing = true
 
     init() {
+        Db.shared.initDb()
     }
+
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea(.all)
@@ -34,8 +36,4 @@ struct ContentView: View {
             }
         }
     }
-}
-
-#Preview {
-    ContentView()
 }

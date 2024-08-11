@@ -87,7 +87,7 @@ struct HistoryView: View {
                                 ExpenseRow(
                                     icon: ee.category.icon,
                                     title: ee.category.title,
-                                    time: ee.createdAt.formatted(),
+                                    time: ee.createdAt?.formatted() ?? "",
                                     amount: String(ee.amount)
                                 )
                             }

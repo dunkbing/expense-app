@@ -33,3 +33,11 @@ func formatDate(_ date: Date) -> String {
 
     return dateFormatter.string(from: date)
 }
+
+func convertStringToDate(_ dateString: String) -> Date? {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd/MM/yyyy, h:mm a"
+    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+
+    return dateFormatter.date(from: dateString)
+}

@@ -121,6 +121,14 @@ struct ExpenseEntryView: View {
                 .foregroundColor(.white)
 
                 AnimatedPressButton(action: {
+                    Db.shared.createExpense(
+                        ExpenseCreate(
+                            amount: amount,
+                            note: note,
+                            createdAt: date,
+                            category: ""
+                        )
+                    )
                     showToast = true
                 }) {
                     HStack {

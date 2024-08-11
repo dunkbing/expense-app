@@ -24,6 +24,8 @@
 		37B32E732C647B07000F9312 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E722C647B07000F9312 /* CategoriesView.swift */; };
 		37B32E772C64A6C0000F9312 /* ExpenseEntryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E762C64A6C0000F9312 /* ExpenseEntryTabView.swift */; };
 		37B32E792C64BB83000F9312 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E782C64BB83000F9312 /* CustomTabView.swift */; };
+		C336B3612C67CE9400DBB2A4 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = C336B3602C67CE9400DBB2A4 /* SQLite */; };
+		C336B3632C67CEB000DBB2A4 /* Db.swift in Sources */ = {isa = PBXBuildFile; fileRef = C336B3622C67CEB000DBB2A4 /* Db.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,7 @@
 		37B32E722C647B07000F9312 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		37B32E762C64A6C0000F9312 /* ExpenseEntryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryTabView.swift; sourceTree = "<group>"; };
 		37B32E782C64BB83000F9312 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
+		C336B3622C67CEB000DBB2A4 /* Db.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Db.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C336B3612C67CE9400DBB2A4 /* SQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +67,7 @@
 			children = (
 				375697602C660C1000BAB09D /* ExpenseEntity.swift */,
 				375697622C660CE200BAB09D /* CategoryEntity.swift */,
+				C336B3622C67CEB000DBB2A4 /* Db.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -146,6 +151,9 @@
 			dependencies = (
 			);
 			name = Expense;
+			packageProductDependencies = (
+				C336B3602C67CE9400DBB2A4 /* SQLite */,
+			);
 			productName = Expense;
 			productReference = 37B32E572C631634000F9312 /* Expense.app */;
 			productType = "com.apple.product-type.application";
@@ -174,6 +182,9 @@
 				Base,
 			);
 			mainGroup = 37B32E4E2C631634000F9312;
+			packageReferences = (
+				C336B35F2C67CE9400DBB2A4 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+			);
 			productRefGroup = 37B32E582C631634000F9312 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -209,6 +220,7 @@
 				37B32E6A2C631707000F9312 /* NumberButton.swift in Sources */,
 				37B32E712C634867000F9312 /* KeypadView.swift in Sources */,
 				3756975A2C65C68000BAB09D /* HistoryView.swift in Sources */,
+				C336B3632C67CEB000DBB2A4 /* Db.swift in Sources */,
 				37B32E6F2C632B96000F9312 /* Strings.swift in Sources */,
 				37B32E5D2C631634000F9312 /* ContentView.swift in Sources */,
 				37B32E792C64BB83000F9312 /* CustomTabView.swift in Sources */,
@@ -420,6 +432,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C336B35F2C67CE9400DBB2A4 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.15.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C336B3602C67CE9400DBB2A4 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C336B35F2C67CE9400DBB2A4 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 37B32E4F2C631634000F9312 /* Project object */;
 }

@@ -8,9 +8,16 @@
 import Foundation
 
 struct ExpenseEntity {
-    let id: Int
+    let id: Int64
     let amount: Double
-    let description: String = ""
-    let createdAt: Date
+    let note: String? = ""
+    let createdAt: Date?
     let category: CategoryEntity
+}
+
+struct ExpenseCreate {
+    let amount: Double
+    let note: String
+    let createdAt: Date
+    let category: String
 }
