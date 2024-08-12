@@ -5,6 +5,7 @@
 //  Created by Bing on 7/8/24.
 //
 
+import SwiftData
 import SwiftUI
 
 struct ExpenseTypePicker: View {
@@ -44,11 +45,25 @@ struct ExpenseTypePicker: View {
 }
 
 struct ExpenseEntryView: View {
+    @Environment(\.modelContext) var modelContext
+    @Query(
+        filter: #Predicate<CategoryModel> { movie in
+            movie.type == CATEGORY_TYPE
+        }
+    ) var categories: [CategoryModel]
+    @Query(
+        filter: #Predicate<CategoryModel> { movie in
+            movie.type == PAYMENT_TYPE
+        }
+    ) var payments: [CategoryModel]
+
     @State private var amount: Double = 0
     @State private var isExpense = true
     @State private var note: String = ""
+    @State private var category: CategoryModel? = nil
+    @State private var payment: CategoryModel? = nil
     @State private var textFieldWidth: CGFloat = 150
-    @State var date = Date.now
+    @State private var date = Date.now
     @State private var isShowingDatePicker = false
     @State private var showToast = false
 
@@ -104,8 +119,14 @@ struct ExpenseEntryView: View {
 
             KeypadView(amount: $amount)
 
-            CategoriesView()
-            CategoriesView()
+            CategoriesView(
+                selectedItem: $category,
+                items: categories
+            )
+            CategoriesView(
+                selectedItem: $payment,
+                items: payments
+            )
 
             VStack {
                 AnimatedPressButton(action: {
@@ -121,14 +142,15 @@ struct ExpenseEntryView: View {
                 .foregroundColor(.white)
 
                 AnimatedPressButton(action: {
-                    Db.shared.createExpense(
-                        ExpenseCreate(
-                            amount: amount,
-                            note: note,
-                            createdAt: date,
-                            category: ""
-                        )
+                    let e = ExpenseModel(
+                        amount: amount,
+                        type: isExpense ? "expense" : "income",
+                        note: note,
+                        category: category,
+                        payment: payment,
+                        createdAt: date
                     )
+                    modelContext.insert(e)
                     showToast = true
                 }) {
                     HStack {

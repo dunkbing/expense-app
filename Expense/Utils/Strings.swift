@@ -17,7 +17,7 @@ func formatCurrency(num: Double, locale: Locale) -> String {
     return priceString
 }
 
-func formatDate(_ date: Date) -> String {
+func formatDateTime(_ date: Date) -> String {
     let calendar = Calendar.current
     let dateFormatter = DateFormatter()
 
@@ -32,6 +32,25 @@ func formatDate(_ date: Date) -> String {
     }
 
     return dateFormatter.string(from: date)
+}
+
+func formatDate(_ dateOp: Date?) -> String {
+    if let date = dateOp {
+        let calendar = Calendar.current
+        if calendar.isDateInToday(date) {
+            return "Today"
+        }
+        else if calendar.isDateInYesterday(date) {
+            return "Yesterday"
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        return dateFormatter.string(from: date)
+    }
+    else {
+        return ""
+    }
 }
 
 func convertStringToDate(_ dateString: String) -> Date? {

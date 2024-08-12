@@ -12,14 +12,13 @@ struct ContentView: View {
     @State private var isDetailShowing = true
 
     init() {
-        Db.shared.initDb()
     }
 
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea(.all)
             TabView(selection: $tabSelection) {
-                HistoryView(expenses: []).tag(1)
+                HistoryView().tag(1)
                 ExpenseEntryTabView()
                     .tag(2)
                 SettingsView()

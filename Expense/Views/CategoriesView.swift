@@ -7,25 +7,19 @@
 
 import SwiftUI
 
-struct CategoryItem: Identifiable {
-    let id = UUID()
-    let name: String
-    let emoji: String
-}
-
 struct CategoryItemView: View {
-    @Binding var selectedItem: UUID?
-    let item: CategoryItem
+    @Binding var selectedItem: CategoryModel?
+    let item: CategoryModel
 
     var isSelected: Bool {
-        selectedItem == item.id
+        selectedItem?.name == item.name
     }
 
     var body: some View {
-        AnimatedPressButton(action: {
-            selectedItem = isSelected ? nil : item.id
+        Button(action: {
+            selectedItem = isSelected ? nil : item
         }) {
-            Text("\(item.emoji) \(item.name)")
+            Text("\(item.icon) \(item.name)")
                 .font(.headline)
                 .foregroundColor(.white)
                 .padding()
@@ -40,26 +34,24 @@ struct CategoryItemView: View {
                 )
                 .opacity(selectedItem == nil || isSelected ? 1.0 : 0.5)
         }
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
 struct CategoriesView: View {
-    @State private var selectedItem: UUID?
-    let items = [
-        CategoryItem(name: "Meal", emoji: "🍔"),
-        CategoryItem(name: "Coffee", emoji: "☕️"),
-        CategoryItem(name: "Groceries", emoji: "🛒"),
-        CategoryItem(name: "Cash", emoji: "💵"),
-        CategoryItem(name: "Credit card", emoji: "💳"),
-        CategoryItem(name: "Digital wallet", emoji: "📱"),
-    ]
+    @Binding var selectedItem: CategoryModel?
+    let items: [CategoryModel]
 
     var body: some View {
         HStack {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(items) { item in
-                        CategoryItemView(selectedItem: $selectedItem, item: item)
+                    ForEach(items, id: \.name) { item in
+                        CategoryItemView(
+                            selectedItem: $selectedItem,
+                            item: item
+                        )
+                        //                        Text(String(item.name)).foregroundColor(.white)
                     }
                 }
                 .padding(.horizontal)
@@ -78,9 +70,4 @@ struct CategoriesView: View {
             .padding(.trailing)
         }
     }
-
-}
-
-#Preview {
-    CategoriesView()
 }

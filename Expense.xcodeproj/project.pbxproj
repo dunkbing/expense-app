@@ -10,9 +10,9 @@
 		3756975A2C65C68000BAB09D /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375697592C65C68000BAB09D /* HistoryView.swift */; };
 		3756975C2C65EDDB00BAB09D /* AnimatedPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3756975B2C65EDDB00BAB09D /* AnimatedPressButton.swift */; };
 		3756975E2C66000600BAB09D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3756975D2C66000600BAB09D /* SettingsView.swift */; };
-		375697612C660C1000BAB09D /* ExpenseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375697602C660C1000BAB09D /* ExpenseEntity.swift */; };
-		375697632C660CE200BAB09D /* CategoryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375697622C660CE200BAB09D /* CategoryEntity.swift */; };
 		375697652C66159B00BAB09D /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375697642C66159B00BAB09D /* ToastView.swift */; };
+		375697882C69EA8100BAB09D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375697872C69EA8100BAB09D /* Models.swift */; };
+		3756978A2C6A07F500BAB09D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375697892C6A07F500BAB09D /* Constants.swift */; };
 		37B32E5B2C631634000F9312 /* ExpenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E5A2C631634000F9312 /* ExpenseApp.swift */; };
 		37B32E5D2C631634000F9312 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E5C2C631634000F9312 /* ContentView.swift */; };
 		37B32E5F2C631636000F9312 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37B32E5E2C631636000F9312 /* Assets.xcassets */; };
@@ -24,17 +24,15 @@
 		37B32E732C647B07000F9312 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E722C647B07000F9312 /* CategoriesView.swift */; };
 		37B32E772C64A6C0000F9312 /* ExpenseEntryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E762C64A6C0000F9312 /* ExpenseEntryTabView.swift */; };
 		37B32E792C64BB83000F9312 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E782C64BB83000F9312 /* CustomTabView.swift */; };
-		C336B3612C67CE9400DBB2A4 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = C336B3602C67CE9400DBB2A4 /* SQLite */; };
-		C336B3632C67CEB000DBB2A4 /* Db.swift in Sources */ = {isa = PBXBuildFile; fileRef = C336B3622C67CEB000DBB2A4 /* Db.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		375697592C65C68000BAB09D /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		3756975B2C65EDDB00BAB09D /* AnimatedPressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPressButton.swift; sourceTree = "<group>"; };
 		3756975D2C66000600BAB09D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		375697602C660C1000BAB09D /* ExpenseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntity.swift; sourceTree = "<group>"; };
-		375697622C660CE200BAB09D /* CategoryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEntity.swift; sourceTree = "<group>"; };
 		375697642C66159B00BAB09D /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		375697872C69EA8100BAB09D /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		375697892C6A07F500BAB09D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		37B32E572C631634000F9312 /* Expense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Expense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37B32E5A2C631634000F9312 /* ExpenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseApp.swift; sourceTree = "<group>"; };
 		37B32E5C2C631634000F9312 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,7 +45,6 @@
 		37B32E722C647B07000F9312 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		37B32E762C64A6C0000F9312 /* ExpenseEntryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryTabView.swift; sourceTree = "<group>"; };
 		37B32E782C64BB83000F9312 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
-		C336B3622C67CEB000DBB2A4 /* Db.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Db.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +52,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C336B3612C67CE9400DBB2A4 /* SQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,9 +61,7 @@
 		3756975F2C660C0000BAB09D /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				375697602C660C1000BAB09D /* ExpenseEntity.swift */,
-				375697622C660CE200BAB09D /* CategoryEntity.swift */,
-				C336B3622C67CEB000DBB2A4 /* Db.swift */,
+				375697872C69EA8100BAB09D /* Models.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -131,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				37B32E6E2C632B96000F9312 /* Strings.swift */,
+				375697892C6A07F500BAB09D /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -152,7 +147,6 @@
 			);
 			name = Expense;
 			packageProductDependencies = (
-				C336B3602C67CE9400DBB2A4 /* SQLite */,
 			);
 			productName = Expense;
 			productReference = 37B32E572C631634000F9312 /* Expense.app */;
@@ -183,7 +177,6 @@
 			);
 			mainGroup = 37B32E4E2C631634000F9312;
 			packageReferences = (
-				C336B35F2C67CE9400DBB2A4 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 			);
 			productRefGroup = 37B32E582C631634000F9312 /* Products */;
 			projectDirPath = "";
@@ -212,16 +205,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				3756975C2C65EDDB00BAB09D /* AnimatedPressButton.swift in Sources */,
-				375697612C660C1000BAB09D /* ExpenseEntity.swift in Sources */,
-				375697632C660CE200BAB09D /* CategoryEntity.swift in Sources */,
 				37B32E6C2C6317D0000F9312 /* ExpenseEntryView.swift in Sources */,
 				375697652C66159B00BAB09D /* ToastView.swift in Sources */,
 				37B32E732C647B07000F9312 /* CategoriesView.swift in Sources */,
 				37B32E6A2C631707000F9312 /* NumberButton.swift in Sources */,
 				37B32E712C634867000F9312 /* KeypadView.swift in Sources */,
+				3756978A2C6A07F500BAB09D /* Constants.swift in Sources */,
 				3756975A2C65C68000BAB09D /* HistoryView.swift in Sources */,
-				C336B3632C67CEB000DBB2A4 /* Db.swift in Sources */,
 				37B32E6F2C632B96000F9312 /* Strings.swift in Sources */,
+				375697882C69EA8100BAB09D /* Models.swift in Sources */,
 				37B32E5D2C631634000F9312 /* ContentView.swift in Sources */,
 				37B32E792C64BB83000F9312 /* CustomTabView.swift in Sources */,
 				37B32E772C64A6C0000F9312 /* ExpenseEntryTabView.swift in Sources */,
@@ -432,25 +424,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		C336B35F2C67CE9400DBB2A4 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.15.3;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		C336B3602C67CE9400DBB2A4 /* SQLite */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C336B35F2C67CE9400DBB2A4 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
-			productName = SQLite;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 37B32E4F2C631634000F9312 /* Project object */;
 }
