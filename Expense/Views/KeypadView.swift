@@ -18,7 +18,7 @@ struct KeypadView: View {
                     number: "\(number)",
                     action: {
                         let newVal = amount * 10 + Double(number)
-                        let formattedNewVal = formatCurrency(num: newVal, locale: Locale.current)
+                        let formattedNewVal = formatCurrency(newVal, Locale.current)
                         if formattedNewVal.count <= 11 {
                             amount = newVal
                         }
@@ -29,7 +29,7 @@ struct KeypadView: View {
                 number: "K",
                 action: {
                     let newVal = amount * 1000
-                    let formattedNewVal = formatCurrency(num: newVal, locale: Locale.current)
+                    let formattedNewVal = formatCurrency(newVal, Locale.current)
                     if formattedNewVal.count <= 11 {
                         amount = newVal
                     }
@@ -39,7 +39,7 @@ struct KeypadView: View {
                 number: "0",
                 action: {
                     let newVal = amount * 10
-                    let formattedNewVal = formatCurrency(num: newVal, locale: Locale.current)
+                    let formattedNewVal = formatCurrency(newVal, Locale.current)
                     if formattedNewVal.count <= 11 {
                         amount = newVal
                     }

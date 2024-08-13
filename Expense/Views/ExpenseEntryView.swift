@@ -66,6 +66,7 @@ struct ExpenseEntryView: View {
     @State private var date = Date.now
     @State private var isShowingDatePicker = false
     @State private var showToast = false
+    @State private var toastMessage = ""
 
     let dateRange: ClosedRange<Date> =
         Date(timeIntervalSinceNow: -864000)...Date(timeIntervalSinceNow: 864000)
@@ -87,7 +88,7 @@ struct ExpenseEntryView: View {
             .frame(width: 200)
             .overlay {
                 ToastView(
-                    message: "This is a toast message!",
+                    message: toastMessage,
                     isShowing: $showToast
                 )
             }
@@ -95,7 +96,7 @@ struct ExpenseEntryView: View {
 
             Spacer()
 
-            Text("\(formatCurrency(num: amount, locale: Locale.current))")
+            Text("\(formatCurrency(amount, Locale.current))")
                 .font(.system(size: 43, weight: .bold))
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -150,7 +151,9 @@ struct ExpenseEntryView: View {
                         payment: payment,
                         createdAt: date
                     )
+                    toastMessage = "\(formatCurrency(amount)) added"
                     modelContext.insert(e)
+                    amount = 0
                     showToast = true
                 }) {
                     HStack {

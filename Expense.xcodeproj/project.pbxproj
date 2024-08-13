@@ -13,6 +13,8 @@
 		375697652C66159B00BAB09D /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375697642C66159B00BAB09D /* ToastView.swift */; };
 		375697882C69EA8100BAB09D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375697872C69EA8100BAB09D /* Models.swift */; };
 		3756978A2C6A07F500BAB09D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375697892C6A07F500BAB09D /* Constants.swift */; };
+		3756978C2C6B1AB300BAB09D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3756978B2C6B1AB300BAB09D /* Color.swift */; };
+		3756978E2C6B68F500BAB09D /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3756978D2C6B68F500BAB09D /* HistoryViewModel.swift */; };
 		37B32E5B2C631634000F9312 /* ExpenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E5A2C631634000F9312 /* ExpenseApp.swift */; };
 		37B32E5D2C631634000F9312 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B32E5C2C631634000F9312 /* ContentView.swift */; };
 		37B32E5F2C631636000F9312 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37B32E5E2C631636000F9312 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 		375697642C66159B00BAB09D /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		375697872C69EA8100BAB09D /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		375697892C6A07F500BAB09D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3756978B2C6B1AB300BAB09D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		3756978D2C6B68F500BAB09D /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		37B32E572C631634000F9312 /* Expense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Expense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37B32E5A2C631634000F9312 /* ExpenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseApp.swift; sourceTree = "<group>"; };
 		37B32E5C2C631634000F9312 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 				37B32E722C647B07000F9312 /* CategoriesView.swift */,
 				37B32E782C64BB83000F9312 /* CustomTabView.swift */,
 				375697592C65C68000BAB09D /* HistoryView.swift */,
+				3756978D2C6B68F500BAB09D /* HistoryViewModel.swift */,
 				375697642C66159B00BAB09D /* ToastView.swift */,
 				3756975B2C65EDDB00BAB09D /* AnimatedPressButton.swift */,
 				3756975D2C66000600BAB09D /* SettingsView.swift */,
@@ -126,6 +131,7 @@
 			children = (
 				37B32E6E2C632B96000F9312 /* Strings.swift */,
 				375697892C6A07F500BAB09D /* Constants.swift */,
+				3756978B2C6B1AB300BAB09D /* Color.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -208,7 +214,9 @@
 				37B32E6C2C6317D0000F9312 /* ExpenseEntryView.swift in Sources */,
 				375697652C66159B00BAB09D /* ToastView.swift in Sources */,
 				37B32E732C647B07000F9312 /* CategoriesView.swift in Sources */,
+				3756978E2C6B68F500BAB09D /* HistoryViewModel.swift in Sources */,
 				37B32E6A2C631707000F9312 /* NumberButton.swift in Sources */,
+				3756978C2C6B1AB300BAB09D /* Color.swift in Sources */,
 				37B32E712C634867000F9312 /* KeypadView.swift in Sources */,
 				3756978A2C6A07F500BAB09D /* Constants.swift in Sources */,
 				3756975A2C65C68000BAB09D /* HistoryView.swift in Sources */,

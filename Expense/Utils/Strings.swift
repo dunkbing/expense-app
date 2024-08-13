@@ -7,7 +7,7 @@
 
 import Foundation
 
-func formatCurrency(num: Double, locale: Locale) -> String {
+func formatCurrency(_ num: Double, _ locale: Locale = Locale.current) -> String {
     let currencyFormatter = NumberFormatter()
     currencyFormatter.usesGroupingSeparator = true
     currencyFormatter.numberStyle = .currency

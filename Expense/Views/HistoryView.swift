@@ -8,31 +8,23 @@
 import SwiftData
 import SwiftUI
 
-struct ExpenseSection<Content: View>: View {
+struct ExpenseSection: View {
     let title: String
     let amount: String
-    let content: Content
-
-    init(title: String, amount: String, @ViewBuilder content: () -> Content) {
-        self.title = title
-        self.amount = amount
-        self.content = content()
-    }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text(title)
-                    .foregroundColor(.gray)
-                Spacer()
-                Text(amount)
-                    .foregroundColor(.gray)
-            }
-            .fontWeight(.bold)
-            Divider()
-                .background(Color.gray)
-            content
+        HStack {
+            Text(title)
+                .foregroundColor(.gray)
+            Spacer()
+            Text(amount)
+                .foregroundColor(.gray)
         }
+        .fontWeight(.bold)
+        .padding(.vertical, 8)
+        .padding(.horizontal, 16)
+        .frame(maxWidth: .infinity)
+        .background(Color.black)
     }
 }
 
@@ -40,13 +32,14 @@ struct ExpenseRow: View {
     let icon: String?
     let title: String?
     let time: String
-    let amount: String
+    let amount: Double
+    let color: String
 
     var body: some View {
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(Color(icon == "🏠" ? .pink : icon == "🍔" ? .blue : .orange).opacity(0.3))
+                    .fill(colorFromString(color).opacity(0.7))
                     .frame(width: 40, height: 40)
                 Text(icon ?? "💰")
             }
@@ -58,7 +51,7 @@ struct ExpenseRow: View {
                     .foregroundColor(.gray)
             }
             Spacer()
-            Text(amount)
+            Text(formatCurrency(amount))
                 .foregroundColor(.white)
         }
         .fontWeight(.bold)
@@ -66,47 +59,119 @@ struct ExpenseRow: View {
 }
 
 struct HistoryView: View {
-    struct ExpenseHistoryItem {
+    struct ExpenseHistoryItem: Identifiable {
+        let id = UUID()
         let label: String
         let amount: Double
         let expenses: [ExpenseModel]
     }
 
-    @Query var expenses: [ExpenseModel]
+    //    @Query(sort: \ExpenseModel.createdAt, order: .reverse) var expenses: [ExpenseModel]
+    @Environment(\.modelContext) private var modelContext
+    @StateObject private var viewModel = ViewModel()
+
     var expensesArray: [ExpenseHistoryItem] {
-        let groupedExpenses = Dictionary(grouping: expenses) { formatDate($0.createdAt) }
-        let expenseHistoryItems = groupedExpenses.map {
-            (dateString, expenses) -> ExpenseHistoryItem in
-            let totalAmount = expenses.reduce(0) { $0 + $1.amount }
-            return ExpenseHistoryItem(label: dateString, amount: totalAmount, expenses: expenses)
+        let groupedExpenses = Dictionary(grouping: viewModel.expenses) { formatDate($0.createdAt) }
+
+        let sortedKeys = viewModel.expenses.map { formatDate($0.createdAt) }.reduce(
+            into: [String]()
+        ) {
+            result,
+            dateString in
+            if !result.contains(dateString) {
+                result.append(dateString)
+            }
         }
-        return expenseHistoryItems
+
+        return sortedKeys.compactMap { dateString -> ExpenseHistoryItem? in
+            if let expensesForDate = groupedExpenses[dateString] {
+                let totalAmount = expensesForDate.reduce(0) { $0 + $1.amount }
+                return ExpenseHistoryItem(
+                    label: dateString,
+                    amount: totalAmount,
+                    expenses: expensesForDate
+                )
+            }
+            return nil
+        }
     }
 
     var body: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.all)
 
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    ForEach(expensesArray, id: \.label) { e in
-                        ExpenseSection(
-                            title: e.label,
-                            amount: formatCurrency(num: e.amount, locale: Locale.current)
-                        ) {
-                            ForEach(e.expenses, id: \.id) { ee in
-                                ExpenseRow(
-                                    icon: ee.category?.icon,
-                                    title: ee.category?.name,
-                                    time: formatDateTime(ee.createdAt),
-                                    amount: String(ee.amount)
+            VStack {
+                HStack {
+                    Button(action: {}) {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.gray.opacity(0.6))
+                            .padding(10)
+                            .fontWeight(.black)
+                            .background(Color.gray.opacity(0.2))
+                            .cornerRadius(50)
+                    }
+                    Spacer()
+                    Button(action: {}) {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                            .foregroundColor(.gray.opacity(0.6))
+                            .padding(10)
+                            .fontWeight(.black)
+                            .background(Color.gray.opacity(0.2))
+                            .cornerRadius(50)
+                    }
+                }
+                .padding()
+
+                List {
+                    ForEach(expensesArray) { section in
+                        Section(
+                            header:
+                                ExpenseSection(
+                                    title: section.label,
+                                    amount: formatCurrency(section.amount, Locale.current)
                                 )
+                                .listRowInsets(EdgeInsets())
+                        ) {
+                            ForEach(section.expenses) { expense in
+                                ExpenseRow(
+                                    icon: expense.category?.icon,
+                                    title: expense.category?.name,
+                                    time: formatDateTime(expense.createdAt),
+                                    amount: expense.amount,
+                                    color: expense.category?.color ?? "cyan"
+                                )
+                                .listRowBackground(Color.black)
+                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                    Button(role: .destructive) {
+                                        if let index = section.expenses.firstIndex(where: {
+                                            $0.id == expense.id
+                                        }) {
+                                            deleteExpenses(IndexSet(integer: index), in: section)
+                                        }
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
+                                    .tint(.gray)
+                                }
                             }
                         }
                     }
                 }
+                .listStyle(PlainListStyle())
             }
-            .padding()
+        }
+    }
+
+    private func deleteExpenses(_ indexSet: IndexSet, in section: ExpenseHistoryItem) {
+        for index in indexSet {
+            let expenseToDelete = section.expenses[index]
+            modelContext.delete(expenseToDelete)
+        }
+        do {
+            try modelContext.save()
+        }
+        catch {
+            print("Error deleting expense: \(error)")
         }
     }
 }

@@ -19,7 +19,7 @@ struct NumberButton: View {
                 .fontWeight(.bold)
                 .frame(width: 90, height: 55)
                 .background(Color.gray.opacity(0.2))
-                .foregroundColor(.orange)
+                .foregroundColor(.white)
                 .cornerRadius(15)
                 .scaleEffect(isPressed ? 0.9 : 1.0)
         }
