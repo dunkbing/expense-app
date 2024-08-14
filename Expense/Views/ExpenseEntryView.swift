@@ -45,17 +45,8 @@ struct ExpenseTypePicker: View {
 }
 
 struct ExpenseEntryView: View {
-    @Environment(\.modelContext) var modelContext
-    @Query(
-        filter: #Predicate<CategoryModel> { movie in
-            movie.type == CATEGORY_TYPE
-        }
-    ) var categories: [CategoryModel]
-    @Query(
-        filter: #Predicate<CategoryModel> { movie in
-            movie.type == PAYMENT_TYPE
-        }
-    ) var payments: [CategoryModel]
+    @Binding var expenseViewModel: ExpenseViewModel
+    @Binding var categoryViewModel: CategoryViewModel
 
     @State private var amount: Double = 0
     @State private var isExpense = true
@@ -122,11 +113,11 @@ struct ExpenseEntryView: View {
 
             CategoriesView(
                 selectedItem: $category,
-                items: categories
+                items: categoryViewModel.categories
             )
             CategoriesView(
                 selectedItem: $payment,
-                items: payments
+                items: categoryViewModel.payments
             )
 
             VStack {
@@ -152,7 +143,7 @@ struct ExpenseEntryView: View {
                         createdAt: date
                     )
                     toastMessage = "\(formatCurrency(amount)) added"
-                    modelContext.insert(e)
+                    expenseViewModel.insert(e)
                     amount = 0
                     showToast = true
                 }) {
@@ -186,8 +177,4 @@ struct ExpenseEntryView: View {
             }.background(Color.black.gradient.opacity(0.8))
         }
     }
-}
-
-#Preview {
-    ExpenseEntryView()
 }

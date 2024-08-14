@@ -66,14 +66,14 @@ struct HistoryView: View {
         let expenses: [ExpenseModel]
     }
 
-    //    @Query(sort: \ExpenseModel.createdAt, order: .reverse) var expenses: [ExpenseModel]
-    @Environment(\.modelContext) private var modelContext
-    @StateObject private var viewModel = ViewModel()
+    @Binding var expenseViewModel: ExpenseViewModel
 
     var expensesArray: [ExpenseHistoryItem] {
-        let groupedExpenses = Dictionary(grouping: viewModel.expenses) { formatDate($0.createdAt) }
+        let groupedExpenses = Dictionary(grouping: expenseViewModel.expenses) {
+            formatDate($0.createdAt)
+        }
 
-        let sortedKeys = viewModel.expenses.map { formatDate($0.createdAt) }.reduce(
+        let sortedKeys = expenseViewModel.expenses.map { formatDate($0.createdAt) }.reduce(
             into: [String]()
         ) {
             result,
@@ -146,7 +146,10 @@ struct HistoryView: View {
                                         if let index = section.expenses.firstIndex(where: {
                                             $0.id == expense.id
                                         }) {
-                                            deleteExpenses(IndexSet(integer: index), in: section)
+                                            expenseViewModel.deleteExpenses(
+                                                IndexSet(integer: index),
+                                                in: section.expenses
+                                            )
                                         }
                                     } label: {
                                         Label("Delete", systemImage: "trash")
@@ -159,19 +162,6 @@ struct HistoryView: View {
                 }
                 .listStyle(PlainListStyle())
             }
-        }
-    }
-
-    private func deleteExpenses(_ indexSet: IndexSet, in section: ExpenseHistoryItem) {
-        for index in indexSet {
-            let expenseToDelete = section.expenses[index]
-            modelContext.delete(expenseToDelete)
-        }
-        do {
-            try modelContext.save()
-        }
-        catch {
-            print("Error deleting expense: \(error)")
         }
     }
 }

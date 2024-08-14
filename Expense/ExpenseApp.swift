@@ -10,18 +10,23 @@ import SwiftUI
 
 @main
 struct ExpenseApp: App {
+    let container: ModelContainer
+
+    init() {
+        do {
+            container = try ModelContainer(for: CategoryModel.self, ExpenseModel.self)
+            insertDefaultDataIfNeeded(container: container)
+        }
+        catch {
+            fatalError("Failed to create ModelContainer for Movie.")
+        }
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(modelContext: container.mainContext)
         }
-        .modelContainer(for: [CategoryModel.self, ExpenseModel.self]) { result in
-            switch result {
-            case .success(let container):
-                insertDefaultDataIfNeeded(container: container)
-            case .failure(let error):
-                print("Failed to create container: \(error.localizedDescription)")
-            }
-        }
+        .modelContainer(for: [CategoryModel.self, ExpenseModel.self])
     }
 
     @MainActor private func insertDefaultDataIfNeeded(container: ModelContainer) {
