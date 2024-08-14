@@ -24,13 +24,12 @@ struct CategoryItemView: View {
                 .foregroundColor(.white)
                 .padding()
                 .background(
-                    RoundedRectangle(cornerRadius: 25, style: .continuous).fill(
-                        isSelected ? .black : .black.opacity(0.5)
-                    )
-                )
-                .overlay(
                     RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .strokeBorder(.gray.opacity(0.3), lineWidth: 3)
+                        .fill(
+                            isSelected
+                                ? colorFromString(item.color)
+                                : colorFromString(item.color).opacity(0.9)
+                        )
                 )
                 .opacity(selectedItem == nil || isSelected ? 1.0 : 0.5)
         }
@@ -51,7 +50,6 @@ struct CategoriesView: View {
                             selectedItem: $selectedItem,
                             item: item
                         )
-                        //                        Text(String(item.name)).foregroundColor(.white)
                     }
                 }
                 .padding(.horizontal)
@@ -65,7 +63,7 @@ struct CategoriesView: View {
                     .foregroundColor(.white)
                     .padding(10)
             }
-            .background(Color.black)
+            .background(Color.mediumOrange)
             .cornerRadius(15)
             .padding(.trailing)
         }

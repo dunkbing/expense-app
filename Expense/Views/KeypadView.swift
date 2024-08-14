@@ -50,10 +50,9 @@ struct KeypadView: View {
             }) {
                 Image(systemName: "delete.left.fill")
                     .font(.system(size: 35))
-                    .foregroundColor(.gray)
+                    .foregroundColor(.deepOrange)
                     .frame(width: 90, height: 55)
                     .background(Color.white)
-                    .foregroundColor(.black)
                     .fontWeight(.heavy)
                     .cornerRadius(10)
             }

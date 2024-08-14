@@ -22,24 +22,21 @@ struct ExpenseTypePicker: View {
                 }) {
                     Text(options[index])
                 }
+                .fontWeight(.bold)
                 .padding(.vertical, 8)
                 .padding(.horizontal, 14)
                 .background(
                     selection == (index == 0)
-                        ? Color.gray.opacity(0.6)
+                        ? Color.deepOrange.opacity(0.7)
                         : Color.clear
                 )
-                .foregroundColor(
-                    selection == (index == 0)
-                        ? .white
-                        : .gray
-                )
+                .foregroundColor(.white)
                 .cornerRadius(18)
             }
         }
         .padding(.vertical, 4)
         .padding(.horizontal, 4)
-        .background(Color.gray.opacity(0.2))
+        .background(Color.lightOrange)
         .cornerRadius(22)
     }
 }
@@ -89,7 +86,7 @@ struct ExpenseEntryView: View {
 
             Text("\(formatCurrency(amount, Locale.current))")
                 .font(.system(size: 43, weight: .bold))
-                .foregroundColor(.white)
+                .foregroundColor(.textOrange)
                 .frame(maxWidth: .infinity, alignment: .center)
 
             TextField(
@@ -131,9 +128,12 @@ struct ExpenseEntryView: View {
                             .font(.system(size: 30))
                     }
                 }
-                .foregroundColor(.white)
+                .foregroundColor(.mediumOrange)
 
                 AnimatedPressButton(action: {
+                    if amount <= 0 {
+                        return
+                    }
                     let e = ExpenseModel(
                         amount: amount,
                         type: isExpense ? "expense" : "income",
@@ -151,18 +151,18 @@ struct ExpenseEntryView: View {
                         Text("Add")
                         Image(systemName: "checkmark.diamond.fill")
                     }
-                    .padding(.vertical)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .font(.system(size: 25))
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .background(Color.deepOrange)
+                    .cornerRadius(50)
                 }
-                .frame(maxWidth: .infinity)
-                .font(.system(size: 25))
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .background(Color.green.opacity(0.7))
-                .cornerRadius(50)
             }
             .padding()
         }
-        .background(Color(.black).ignoresSafeArea(.all))
+        .background(Color.backgroundPeach.ignoresSafeArea(.all))
         .sheet(isPresented: $isShowingDatePicker) {
             ZStack {
                 DatePicker("", selection: $date, displayedComponents: [.date, .hourAndMinute])
