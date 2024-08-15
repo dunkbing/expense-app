@@ -21,10 +21,9 @@ struct TabButton: View {
                 Text(title)
                     .font(.headline)
             }
-            //            .foregroundColor(isSelected ? .white : .gray)
-            .foregroundColor(.white)
+            .foregroundColor(.backgroundPeach)
             .padding(10)
-            .shadow(color: isSelected ? .white.opacity(0.6) : .clear, radius: 10, x: 0, y: 0)
+            .shadow(color: isSelected ? .white : .clear, radius: 10, x: 0, y: 0)
         }
         .padding(.horizontal, 10)
     }

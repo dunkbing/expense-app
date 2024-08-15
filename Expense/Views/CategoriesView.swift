@@ -62,9 +62,9 @@ struct CategoriesView: View {
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .padding(10)
+                    .background(Color.mediumOrange)
+                    .cornerRadius(15)
             }
-            .background(Color.mediumOrange)
-            .cornerRadius(15)
             .padding(.trailing)
         }
     }

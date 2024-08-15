@@ -15,16 +15,16 @@ struct ExpenseSection: View {
     var body: some View {
         HStack {
             Text(title)
-                .foregroundColor(.gray)
+                .foregroundColor(.orange)
             Spacer()
             Text(amount)
-                .foregroundColor(.gray)
+                .foregroundColor(.orange)
         }
         .fontWeight(.bold)
         .padding(.vertical, 8)
         .padding(.horizontal, 16)
         .frame(maxWidth: .infinity)
-        .background(Color.black)
+        .background(Color.backgroundPeach)
     }
 }
 
@@ -44,15 +44,15 @@ struct ExpenseRow: View {
                 Text(icon ?? "💰")
             }
             VStack(alignment: .leading) {
-                Text(title ?? "")
-                    .foregroundColor(.white)
+                Text(title ?? "Uncategorized")
+                    .foregroundColor(.deepOrange)
                 Text(time)
                     .font(.caption)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.mediumOrange)
             }
             Spacer()
             Text(formatCurrency(amount))
-                .foregroundColor(.white)
+                .foregroundColor(.deepOrange)
         }
         .fontWeight(.bold)
     }
@@ -98,25 +98,25 @@ struct HistoryView: View {
 
     var body: some View {
         ZStack {
-            Color.black.edgesIgnoringSafeArea(.all)
+            Color.backgroundPeach.edgesIgnoringSafeArea(.all)
 
             VStack {
                 HStack {
                     Button(action: {}) {
                         Image(systemName: "magnifyingglass")
-                            .foregroundColor(.gray.opacity(0.6))
+                            .foregroundColor(.orange.opacity(0.8))
                             .padding(10)
                             .fontWeight(.black)
-                            .background(Color.gray.opacity(0.2))
+                            .background(Color.orange.opacity(0.2))
                             .cornerRadius(50)
                     }
                     Spacer()
                     Button(action: {}) {
                         Image(systemName: "line.3.horizontal.decrease.circle")
-                            .foregroundColor(.gray.opacity(0.6))
+                            .foregroundColor(.orange.opacity(0.8))
                             .padding(10)
                             .fontWeight(.black)
-                            .background(Color.gray.opacity(0.2))
+                            .background(Color.orange.opacity(0.2))
                             .cornerRadius(50)
                     }
                 }
@@ -140,7 +140,7 @@ struct HistoryView: View {
                                     amount: expense.amount,
                                     color: expense.category?.color ?? "cyan"
                                 )
-                                .listRowBackground(Color.black)
+                                .listRowBackground(Color.backgroundPeach)
                                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                     Button(role: .destructive) {
                                         if let index = section.expenses.firstIndex(where: {
