@@ -55,6 +55,15 @@ struct ExpenseEntryView: View {
     @State private var isShowingDatePicker = false
     @State private var showToast = false
     @State private var toastMessage = ""
+    @State private var isCategoryExpanded = false
+    @State private var selectedCategory: String?
+    let categories = [
+        "Groceries",
+        "Subscriptions",
+        "Rent",
+        "Transport",
+        "Food",
+    ]
 
     let dateRange: ClosedRange<Date> =
         Date(timeIntervalSinceNow: -864000)...Date(timeIntervalSinceNow: 864000)
@@ -108,11 +117,11 @@ struct ExpenseEntryView: View {
 
             KeypadView(amount: $amount)
 
-            CategoriesView(
+            CategoriesSelectionView(
                 selectedItem: $category,
                 items: categoryViewModel.categories
             )
-            CategoriesView(
+            CategoriesSelectionView(
                 selectedItem: $payment,
                 items: categoryViewModel.payments
             )

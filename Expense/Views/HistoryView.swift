@@ -154,7 +154,7 @@ struct HistoryView: View {
                                     } label: {
                                         Label("Delete", systemImage: "trash")
                                     }
-                                    .tint(.gray)
+                                    .tint(.red)
                                 }
                             }
                         }

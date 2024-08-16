@@ -52,7 +52,7 @@ struct KeypadView: View {
                     .font(.system(size: 35))
                     .foregroundColor(.deepOrange)
                     .frame(width: 90, height: 55)
-                    .background(Color.white)
+                    .background(Color.lightOrange)
                     .fontWeight(.heavy)
                     .cornerRadius(10)
             }

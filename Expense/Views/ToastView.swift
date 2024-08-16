@@ -16,7 +16,7 @@ struct ToastView: View {
             if isShowing {
                 Text(message)
                     .padding()
-                    .background(Color.black.opacity(0.7))
+                    .background(Color.black.opacity(0.9))
                     .foregroundColor(.white)
                     .cornerRadius(25)
                     .transition(.move(edge: .top).combined(with: .opacity))
